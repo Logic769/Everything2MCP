@@ -59,6 +59,7 @@
     "@grpc/proto-loader": "^0.8.1",
     "@modelcontextprotocol/sdk": "^1.25.1",
     "amqplib": "^2.0.1",
+    "better-sqlite3": "^11.10.0",
     "coap": "^1.6.0",
     "fast-xml-parser": "^5.2.5",
     "jsmodbus": "^5.0.0",

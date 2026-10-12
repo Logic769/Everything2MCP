@@ -12,8 +12,8 @@
 [![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20HTTP%20%7C%20SSE-purple.svg)](docs/ARCHITECTURE.md)
 [![Phase](https://img.shields.io/badge/phase-X%20Partner%20%2B%20Compat-orange.svg)](docs/RELEASE_NOTES.md)
 <!-- Replace with live CI once the public remote is set:
-[![CI](https://img.shields.io/github/actions/workflow/status/shcdwz1234/Everything2MCP/ci.yml?branch=main)](../../actions)
-[![Stars](https://img.shields.io/github/stars/shcdwz1234/Everything2MCP?style=social)](../../stargazers)
+[![CI](https://img.shields.io/github/actions/workflow/status/OWNER/everything2mcp/ci.yml?branch=main)](../../actions)
+[![Stars](https://img.shields.io/github/stars/OWNER/everything2mcp?style=social)](../../stargazers)
 -->
 
 Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，面向 Agent / IDE 用户与集成方。协议成熟度诚实标注 **Implemented / Thin / leftover**（见 [docs/PROTOCOLS.md](docs/PROTOCOLS.md)）——**不声称全部生产就绪**。许可：**Apache-2.0**。
@@ -78,7 +78,7 @@ Agent 不该为 REST、MQTT、飞书、本机 Docker、对象存储各接一套�
 克隆本仓库后：
 
 ```bash
-git clone <repo-url> everything2mcp
+git clone https://github.com/shcdwz1234/Everything2MCP.git everything2mcp
 cd everything2mcp
 npm ci          # 或 npm install
 npm run build
