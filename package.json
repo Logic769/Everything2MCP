@@ -1,0 +1,105 @@
+{
+  "name": "everything2mcp",
+  "version": "0.1.0",
+  "description": "Everything can become MCP / 万物都能 MCP: auto-discover local & platform caps, bridge heterogeneous protocols into one MCP surface. Safe/Full policy, console UX, Partner ingress (Feishu/DingTalk/WeCom).",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "everything2mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "ui:build": "tsc -p ui/tsconfig.json && node scripts/copy-assets.mjs ui",
+    "build": "tsc && node scripts/copy-assets.mjs protos && npm run ui:build",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "node scripts/run-tests.mjs"
+  },
+  "engines": {
+    "node": ">=18.18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "openapi",
+    "mqtt",
+    "soap",
+    "grpc",
+    "websocket",
+    "graphql",
+    "amqp",
+    "kafka",
+    "bridge",
+    "xmlrpc",
+    "jsonrpc",
+    "fix",
+    "redis",
+    "smtp",
+    "ldap",
+    "bacnet",
+    "sql",
+    "s3",
+    "prometheus",
+    "sqs",
+    "pulsar",
+    "gcs",
+    "oss",
+    "influx",
+    "feishu",
+    "dingtalk",
+    "wecom",
+    "partner",
+    "mcp-bridge",
+    "auto-discovery",
+    "tailscale",
+    "safe-mode"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.5",
+    "@grpc/proto-loader": "^0.8.1",
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "amqplib": "^2.0.1",
+    "coap": "^1.6.0",
+    "fast-xml-parser": "^5.2.5",
+    "jsmodbus": "^5.0.0",
+    "kafkajs": "^2.2.4",
+    "ldapts": "^9.2.0",
+    "mqtt": "^5.14.1",
+    "nats": "^2.29.3",
+    "node-opcua": "^2.186.0",
+    "nodemailer": "^10.0.10",
+    "protobufjs": "^8.8.0",
+    "redis": "^6.2.1",
+    "ssh2": "^1.17.0",
+    "ws": "^8.21.3",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.8",
+    "@types/node": "^24.5.2",
+    "@types/nodemailer": "^8.0.2",
+    "@types/ssh2": "^1.15.6",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "author": "shui",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shcdwz1234/Everything2MCP.git"
+  },
+  "homepage": "https://github.com/shcdwz1234/Everything2MCP#readme",
+  "bugs": {
+    "url": "https://github.com/shcdwz1234/Everything2MCP/issues"
+  },
+  "files": [
+    "dist/",
+    "compat/",
+    "examples/",
+    "docs/",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md"
+  ]
+}
