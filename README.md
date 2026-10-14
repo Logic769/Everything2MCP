@@ -16,6 +16,16 @@
 
 Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，面向 Agent / IDE 用户与集成方。协议成熟度诚实标注 **Implemented / Thin / leftover**（见 [docs/PROTOCOLS.md](docs/PROTOCOLS.md)）——**不声称全部生产就绪**。许可：**Apache-2.0**。
 
+## English (above the fold)
+
+**Everything can become MCP** — discover local & platform caps, bridge OpenAPI / gRPC / MQTT / queues, Safe/Full gates, Partner + Feishu/DingTalk/WeCom. One hot-reload MCP surface. **Apache-2.0**.
+
+![Demo: console → discover/OpenAPI → tool call](docs/images/demo.gif)
+
+*Flow: console → discover / enable (OpenAPI & Partner) → Agent `tools/call`. Full walkthrough: [docs/DEMO.md](docs/DEMO.md). 中文见下方.*
+
+---
+
 ## 中文
 
 ### 定位：万物都能 MCP
@@ -586,7 +596,7 @@ Everything2MCP’s goal is **Everything can become MCP** — turn local capabili
 
 ### One-liner
 
-**Everything can become MCP** — discover local & platform caps, bridge southbound protocols, Safe/Full gates, console UX, Partner + Feishu/DingTalk/WeCom. **Apache-2.0**.
+**Everything can become MCP** — discover local & platform caps, bridge OpenAPI / gRPC / MQTT / queues, Safe/Full gates, Partner + Feishu/DingTalk/WeCom. One hot-reload MCP surface. **Apache-2.0**.
 
 ### Why it exists
 
