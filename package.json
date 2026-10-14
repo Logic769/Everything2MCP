@@ -12,7 +12,9 @@
     "build": "tsc && node scripts/copy-assets.mjs protos && npm run ui:build",
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
-    "test": "node scripts/run-tests.mjs"
+    "test": "node scripts/run-tests.mjs",
+    "prepare": "node scripts/prepare.mjs",
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18.18"
@@ -51,7 +53,9 @@
     "mcp-bridge",
     "auto-discovery",
     "tailscale",
-    "safe-mode"
+    "safe-mode",
+    "npx",
+    "cli"
   ],
   "license": "Apache-2.0",
   "dependencies": {
@@ -101,6 +105,16 @@
     "README.md",
     "LICENSE",
     "SECURITY.md",
-    "CONTRIBUTING.md"
-  ]
+    "CONTRIBUTING.md",
+    "scripts/prepare.mjs"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

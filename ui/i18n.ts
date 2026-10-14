@@ -384,6 +384,14 @@ const EN: Record<string, string> = {
   "）": ")",
   "、": ", ",
   "；": "; ",
+  "默认 ": "Default ",
+  "扫描 ": "Scanning ",
+  "…": "…",
+  " 已发现": " discovered",
+  "自动发现 · ": "Auto-discovery · ",
+  "已拉黑 ": "Blacklisted ",
+  " (上限)": " (capped)",
+  " · ": " · ",
 };
 
 export function getLocale(): Locale {

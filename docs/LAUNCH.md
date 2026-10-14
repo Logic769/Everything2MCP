@@ -118,3 +118,20 @@ Release：v0.1.0
 - [ ] CI green on `main`
 - [ ] Human tone pass (no hype, keep honesty about Thin)
 - [ ] awesome-mcp-servers: draft PR only after fork + section match
+
+
+---
+
+## Social preview / OG card
+
+Asset: [`docs/images/og.png`](images/og.png) (1200×630).
+
+**GitHub repo social preview:** Settings → General → Social preview → Upload `docs/images/og.png` (or let GitHub auto-pick the README image).
+
+**Link previews elsewhere:** point Open Graph / Twitter card image URLs at the raw file, e.g.
+
+```
+https://raw.githubusercontent.com/shcdwz1234/Everything2MCP/main/docs/images/og.png
+```
+
+Do not spam-post; keep this for manual share cards and the README.

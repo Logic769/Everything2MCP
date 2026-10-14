@@ -8,10 +8,13 @@
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Node ≥18.18](https://img.shields.io/badge/node-%E2%89%A518.18-brightgreen.svg)](package.json)
+[![Release](https://img.shields.io/github/v/release/shcdwz1234/Everything2MCP?display_name=tag)](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0)
+[![Demo](https://img.shields.io/badge/demo-3%20min-orange.svg)](docs/DEMO.md)
 [![Tests](https://img.shields.io/badge/tests-147%20suites%20%2F%20599-blue.svg)](docs/AUDIT.md)
 [![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20HTTP%20%7C%20SSE-purple.svg)](docs/ARCHITECTURE.md)
 [![Phase](https://img.shields.io/badge/phase-X%20Partner%20%2B%20Compat-orange.svg)](docs/RELEASE_NOTES.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/shcdwz1234/Everything2MCP/ci.yml?branch=main)](https://github.com/shcdwz1234/Everything2MCP/actions/workflows/ci.yml)
+[![npm prepare](https://img.shields.io/badge/npm-publishable-informational.svg)](package.json)
 [![Stars](https://img.shields.io/github/stars/shcdwz1234/Everything2MCP?style=social)](https://github.com/shcdwz1234/Everything2MCP/stargazers)
 
 Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，面向 Agent / IDE 用户与集成方。协议成熟度诚实标注 **Implemented / Thin / leftover**（见 [docs/PROTOCOLS.md](docs/PROTOCOLS.md)）——**不声称全部生产就绪**。许可：**Apache-2.0**。
@@ -22,7 +25,29 @@ Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，�
 
 ![Demo: console → discover/OpenAPI → tool call](docs/images/demo.gif)
 
-*Flow: console → discover / enable (OpenAPI & Partner) → Agent `tools/call`. Full walkthrough: [docs/DEMO.md](docs/DEMO.md). 中文见下方.*
+[![Social / OG card](docs/images/og.png)](https://github.com/shcdwz1234/Everything2MCP)
+
+*Flow: console → discover / enable (OpenAPI & Partner) → Agent `tools/call`. Full walkthrough: [docs/DEMO.md](docs/DEMO.md). Release: [v0.1.0](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0). 中文见下方.*
+
+### Install (npm / npx)
+
+Package name: **`everything2mcp`** (bin: `everything2mcp`). Node **≥ 18.18**. Native deps (`better-sqlite3`) need a working C/C++ toolchain on first install.
+
+```bash
+# From npm (once published):
+npx everything2mcp
+# or
+npm install -g everything2mcp && everything2mcp
+
+# From this repo (today — not yet on the public registry):
+git clone https://github.com/shcdwz1234/Everything2MCP.git
+cd Everything2MCP
+npm ci && npm run build
+npm start                                 # stdio MCP (Cursor / Claude Desktop)
+EVERYTHING2MCP_TRANSPORT=http npm start   # console at http://127.0.0.1:8742/ui/
+```
+
+`npm pack` / `npm publish` ship prebuilt `dist/` (see `files` + `prepare` in `package.json`). Git installs run `prepare` to build when `dist/` is missing. **Not published to npm yet** — no registry auth on this machine; package is publish-ready.
 
 ---
 
@@ -80,6 +105,26 @@ Agent 不该为 REST、MQTT、飞书、本机 Docker、对象存储各接一套�
 
 **3 分钟上手：** [docs/DEMO.md](docs/DEMO.md)
 
+
+### 安装（npm / npx）
+
+包名：**`everything2mcp`**（bin 同名）。Node **≥ 18.18**。首次安装原生依赖（`better-sqlite3`）需要本机 C/C++ 工具链。
+
+```bash
+# 发布到 npm 之后：
+npx everything2mcp
+# 或
+npm install -g everything2mcp && everything2mcp
+
+# 当前（尚未上公共 registry）——从仓库构建：
+git clone https://github.com/shcdwz1234/Everything2MCP.git
+cd Everything2MCP
+npm ci && npm run build
+npm start
+EVERYTHING2MCP_TRANSPORT=http npm start   # 控制台 http://127.0.0.1:8742/ui/
+```
+
+发布物含预构建 `dist/`；从 git 安装时若无 `dist/` 会走 `prepare` 自动 build。**尚未 `npm publish`**（本机无 registry 登录）——`package.json` 已按可发布配置好。Release：[v0.1.0](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0) · Demo：[docs/DEMO.md](docs/DEMO.md)。
 
 ### 快速开始
 
@@ -616,12 +661,16 @@ MCP client users (Cursor / Claude Desktop), integrators who refuse to rewrite ap
 
 ### Quick start
 
+See **[Install (npm / npx)](#install-npm--npx)** above. From a clone:
+
 ```bash
 npm ci && npm run build && npm test
 EVERYTHING2MCP_TRANSPORT=http EVERYTHING2MCP_HTTP_PORT=8742 npm start
 # Console: http://127.0.0.1:8742/ui/
 # MCP:     http://127.0.0.1:8742/mcp
 ```
+
+Release: [v0.1.0](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0) · Demo: [docs/DEMO.md](docs/DEMO.md) · OG card: [docs/images/og.png](docs/images/og.png)
 
 PowerShell (`;` not `&&`):
 

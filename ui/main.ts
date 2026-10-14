@@ -140,7 +140,7 @@ function layout(page: Page, body: string): string {
         </details>
       </nav>
       <div class="side-foot">
-        默认 <code>allowWrite=false</code><br/>
+        ${tr("默认 ")}<code>allowWrite=false</code><br/>
         ${tr("自动发现只扫私网，元数据地址永不扫描")}<br/>
         ${tr("黑名单在 Full 模式下仍生效")}
       </div>
@@ -477,7 +477,7 @@ async function renderPartner(): Promise<string> {
             <button class="btn sm danger" type="button" data-hot-del="${esc(a.id)}">${tr("确认卸载")}</button>
           </div>
         </div>
-        <h4>接口 <span class="hint">${ops.length}</span></h4>
+        <h4>${tr("接口")} <span class="hint">${ops.length}</span></h4>
         <p class="hint">${tr("每个 Partner operation 对应一个 MCP tool；可单独拉黑（不影响同应用其它接口）。")}</p>
         ${opRows || `<div class="empty">${tr("没有接口")}</div>`}
       </div>`;
@@ -963,7 +963,7 @@ document.getElementById("rotate-partner-token")?.addEventListener("click", async
       };
       if (portRaw) body.port = Number(portRaw);
       const box = document.getElementById("scan-out");
-      if (box) box.innerHTML = `<div class="hint">扫描 ${esc(host)}…</div>`;
+      if (box) box.innerHTML = `<div class="hint">${tr("扫描 ")}${esc(host)}${tr("…")}</div>`;
       try {
         const scanned = await rest.scan(body);
         const suggestions = (scanned.suggestions as Array<Record<string, unknown>>) ?? [];
@@ -1224,7 +1224,7 @@ function strip(ov: J, tab: CapTab): string {
       </a>
       <a class="strip-item ${tab === "supported" ? "on" : ""}" href="${href("/caps?tab=supported")}">
         <span class="strip-k">${tr("可支持能力")}</span>
-        <span class="strip-v">${esc(s.discovered ?? 0)}<small> 已发现</small></span>
+        <span class="strip-v">${esc(s.discovered ?? 0)}<small>${tr(" 已发现")}</small></span>
         <span class="strip-s">${tr("可一键启用 ")}${esc(s.ready ?? 0)}${tr(" · 需要配置 ")}${esc(s.needsConfig ?? 0)}${s.failed ? `${tr(" · 启用失败 ")}${esc(s.failed)}` : ""}${tr(" · 类型 ")}${esc(s.types ?? 0)}</span>
       </a>
       <a class="strip-item ${tab === "blacklist" ? "on" : ""}" href="${href("/caps?tab=blacklist")}">
@@ -1233,8 +1233,8 @@ function strip(ov: J, tab: CapTab): string {
         <span class="strip-s">${tr("目标 ")}${esc(b.target ?? 0)}${tr(" · 能力 ")}${esc(b.capability ?? 0)}${tr(" · 工具 ")}${esc(b.tool ?? 0)}</span>
       </a>
       <div class="strip-item">
-        <span class="strip-k">自动发现 · ${esc(modeLabel)}</span>
-        <span class="strip-s">${d.running ? tr("扫描中…") : last ? `上次 ${esc(fmtTime(last.finishedAt ?? last.startedAt))} · ${esc(last.hostsScanned)} ${tr("台主机 · 新 ")}${esc(last.newCount)}` : tr("尚未运行")}</span>
+        <span class="strip-k">${tr("自动发现 · ")}${esc(modeLabel)}</span>
+        <span class="strip-s">${d.running ? tr("扫描中…") : last ? `${tr("上次")} ${esc(fmtTime(last.finishedAt ?? last.startedAt))}${tr(" · ")}${esc(last.hostsScanned)} ${tr("台主机 · 新 ")}${esc(last.newCount)}` : tr("尚未运行")}</span>
         <span class="strip-s">${d.nextRunAt ? `下次 ${esc(fmtTime(d.nextRunAt))}` : d.mode === "off" ? `<a href="${href("/settings")}">${tr("去设置打开")}</a>` : tr("仅手动触发")}</span>
         <button class="btn sm" type="button" data-run-discovery ${d.mode === "off" || d.running ? "disabled" : ""}>${tr("立即扫描")}</button>
       </div>
@@ -1620,7 +1620,7 @@ function bindCaps(tab: CapTab): void {
       const c = candidateList[Number(btn.dataset.candBl)];
       if (!c) return;
       const body: Record<string, unknown> = { ...blacklistPayloadFromRecord(c), reason: "console discovery" };
-      await act(() => rest.addBlacklist(body), `已拉黑 ${c.id}`);
+      await act(() => rest.addBlacklist(body), `${tr("已拉黑 ")}${c.id}`);
       return;
     }
     const row = el.closest("tr.cap-row") as HTMLElement | null;
@@ -1734,7 +1734,7 @@ function fieldInput(f: J, value: unknown): string {
     control = `<input name="${esc(name)}" type="${type}" value="${esc(value ?? "")}" ${ph} ${req} />`;
   }
   const oneOf = Array.isArray(f.oneOf) ? `<div class="hint">${tr("与 ")}${esc((f.oneOf as string[]).filter((k) => k !== f.key).join(" / "))}${tr(" 任填其一")}</div>` : "";
-  return `<div class="field"><label>${esc(f.label ?? f.key)}${f.required ? ' <span class="req">*</span>' : f.oneOf ? ' <span class="req">*任一</span>' : ""}</label>${control}${f.description ? `<div class="hint">${esc(f.description)}</div>` : ""}${oneOf}</div>`;
+  return `<div class="field"><label>${esc(f.label ?? f.key)}${f.required ? ' <span class="req">*</span>' : f.oneOf ? ` <span class="req">${tr("*任一")}</span>` : ""}</label>${control}${f.description ? `<div class="hint">${esc(f.description)}</div>` : ""}${oneOf}</div>`;
 }
 
 let wizardSchema: J | undefined;
@@ -1781,7 +1781,7 @@ async function renderAdd(page: { type?: string; edit?: string; source?: string }
     </div>
     ${steps(existing ? 2 : 2)}
     <form class="card wizard-form" id="wizard-form">
-      <div class="field"><label>名称 <span class="req">*</span></label>
+      <div class="field"><label>${tr("名称")} <span class="req">*</span></label>
         <input name="name" value="${esc(existing?.name ?? `${schema.protocol.replace(/_/g, "-")}-1`)}" ${existing ? "disabled" : ""} required pattern="[\\w\\-]{1,64}" />
         <div class="hint">${tr("tools 会以")} <code>${esc(schema.protocol)}.${tr("&lt;名称&gt;.&lt;操作&gt;")}</code> ${tr("暴露给 Agent")}</div>
       </div>
@@ -2001,7 +2001,7 @@ async function renderSettingsPage(): Promise<string> {
     `<label class="radio"><input type="radio" name="mode" value="${v}" ${d?.mode === v ? "checked" : ""}/> <strong>${label}</strong> <span class="hint">${hint}</span></label>`;
   const runRows = runs
     .map(
-      (r) => `<tr><td>${esc(fmtTime(r.startedAt))}</td><td>${esc(r.trigger)}</td><td>${esc(r.hostsScanned)}/${esc(r.hostsPlanned)}${r.truncated ? " (上限)" : ""}</td><td>${esc(r.found)}</td><td>${esc(r.newCount)}</td><td>${esc(r.durationMs ?? "—")} ms</td><td class="hint">${esc((r.errors ?? []).slice(0, 2).join("; "))}</td></tr>`,
+      (r) => `<tr><td>${esc(fmtTime(r.startedAt))}</td><td>${esc(r.trigger)}</td><td>${esc(r.hostsScanned)}/${esc(r.hostsPlanned)}${r.truncated ? tr(" (上限)") : ""}</td><td>${esc(r.found)}</td><td>${esc(r.newCount)}</td><td>${esc(r.durationMs ?? "—")} ms</td><td class="hint">${esc((r.errors ?? []).slice(0, 2).join("; "))}</td></tr>`,
     )
     .join("");
   return `
