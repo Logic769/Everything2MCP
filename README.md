@@ -14,7 +14,7 @@
 [![MCP](https://img.shields.io/badge/MCP-stdio%20%7C%20HTTP%20%7C%20SSE-purple.svg)](docs/ARCHITECTURE.md)
 [![Phase](https://img.shields.io/badge/phase-X%20Partner%20%2B%20Compat-orange.svg)](docs/RELEASE_NOTES.md)
 [![CI](https://img.shields.io/github/actions/workflow/status/shcdwz1234/Everything2MCP/ci.yml?branch=main)](https://github.com/shcdwz1234/Everything2MCP/actions/workflows/ci.yml)
-[![npm prepare](https://img.shields.io/badge/npm-publishable-informational.svg)](package.json)
+[![npm](https://img.shields.io/npm/v/everything2mcp.svg)](https://www.npmjs.com/package/everything2mcp)
 [![Stars](https://img.shields.io/github/stars/shcdwz1234/Everything2MCP?style=social)](https://github.com/shcdwz1234/Everything2MCP/stargazers)
 
 Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，面向 Agent / IDE 用户与集成方。协议成熟度诚实标注 **Implemented / Thin / leftover**（见 [docs/PROTOCOLS.md](docs/PROTOCOLS.md)）——**不声称全部生产就绪**。许可：**Apache-2.0**。
@@ -34,12 +34,12 @@ Everything2MCP 把本机能力与南向协议收敛成 **一个** MCP 表面，�
 Package name: **`everything2mcp`** (bin: `everything2mcp`). Node **≥ 18.18**. Native deps (`better-sqlite3`) need a working C/C++ toolchain on first install.
 
 ```bash
-# From npm (once published):
+# Live on npm (everything2mcp@0.1.0):
 npx everything2mcp
 # or
 npm install -g everything2mcp && everything2mcp
 
-# From this repo (today — not yet on the public registry):
+# From this repo (dev / contribute):
 git clone https://github.com/shcdwz1234/Everything2MCP.git
 cd Everything2MCP
 npm ci && npm run build
@@ -47,7 +47,7 @@ npm start                                 # stdio MCP (Cursor / Claude Desktop)
 EVERYTHING2MCP_TRANSPORT=http npm start   # console at http://127.0.0.1:8742/ui/
 ```
 
-`npm pack` / `npm publish` ship prebuilt `dist/` (see `files` + `prepare` in `package.json`). Git installs run `prepare` to build when `dist/` is missing. **Not published to npm yet** — no registry auth on this machine; package is publish-ready.
+Published tarball ships prebuilt `dist/` (see `files` + `prepare` in `package.json`). Git installs run `prepare` to build when `dist/` is missing. **`everything2mcp@0.1.0` is on npm** — https://www.npmjs.com/package/everything2mcp (`npx everything2mcp` / `npm i -g everything2mcp`).
 
 ---
 
@@ -111,12 +111,12 @@ Agent 不该为 REST、MQTT、飞书、本机 Docker、对象存储各接一套�
 包名：**`everything2mcp`**（bin 同名）。Node **≥ 18.18**。首次安装原生依赖（`better-sqlite3`）需要本机 C/C++ 工具链。
 
 ```bash
-# 发布到 npm 之后：
+# 已上 npm（everything2mcp@0.1.0）：
 npx everything2mcp
 # 或
 npm install -g everything2mcp && everything2mcp
 
-# 当前（尚未上公共 registry）——从仓库构建：
+# 从本仓库构建（开发 / 贡献）：
 git clone https://github.com/shcdwz1234/Everything2MCP.git
 cd Everything2MCP
 npm ci && npm run build
@@ -124,7 +124,7 @@ npm start
 EVERYTHING2MCP_TRANSPORT=http npm start   # 控制台 http://127.0.0.1:8742/ui/
 ```
 
-发布物含预构建 `dist/`；从 git 安装时若无 `dist/` 会走 `prepare` 自动 build。**尚未 `npm publish`**（本机无 registry 登录）——`package.json` 已按可发布配置好。Release：[v0.1.0](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0) · Demo：[docs/DEMO.md](docs/DEMO.md)。
+发布物含预构建 `dist/`；从 git 安装时若无 `dist/` 会走 `prepare` 自动 build。**`everything2mcp@0.1.0` 已发布到 npm** — https://www.npmjs.com/package/everything2mcp（`npx everything2mcp` / `npm i -g everything2mcp`）。Release：[v0.1.0](https://github.com/shcdwz1234/Everything2MCP/releases/tag/v0.1.0) · Demo：[docs/DEMO.md](docs/DEMO.md)。
 
 ### 快速开始
 
